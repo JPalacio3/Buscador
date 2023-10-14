@@ -114,9 +114,13 @@ function llenarSelect() {
 function filtrarAuto() {
     const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMin).filter(filtrarMax).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
 
-    // console.log(resultado)
-    // Recargar el HTML para actualizar el dato de los vehículos ya filtrados
-    mostrarAutos(resultado);
+    // Mostrar un mensaje cuando la búsqueda no arroje resultados
+    if (resultado.length) {
+        // Recargar el HTML para actualizar el dato de los vehículos ya filtrados
+        mostrarAutos(resultado);
+    } else {
+        noResultado();
+    }
 }
 
 // Funciones que realizan los filtrados
@@ -176,4 +180,11 @@ function filtrarColor(auto) {
     return auto;
 }
 
-
+// Función que se ejecuta cuando no arroja resultados la búsqueda
+function noResultado() {
+    limpiarHtml()
+    const noResultado = document.createElement('DIV');
+    noResultado.classList.add('alerta','error');
+    noResultado.textContent = 'No hay resultados para esta búsqueda \n Intenta con otros términos';
+    resultado.appendChild(noResultado)
+}
