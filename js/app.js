@@ -131,7 +131,7 @@ function filtrarMarca(auto) {
 function filtrarYear(auto) {
     const { year } = datosBusqueda;
     if (year) {
-        return auto.year == year;
+        return auto.year === year;
     }
     return auto;
 }
@@ -155,7 +155,7 @@ function filtrarMax(auto) {
 function filtrarPuertas(auto) {
     const { puertas } = datosBusqueda;
     if (puertas) {
-        return auto.puertas == puertas;
+        return auto.puertas === puertas;
     }
     return auto;
 }
